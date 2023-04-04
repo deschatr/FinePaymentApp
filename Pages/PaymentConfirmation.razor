@@ -1,10 +1,9 @@
+@page "/paymentconfirmation" 
 
-@page "/finedetails" 
 
+<PageTitle>PaymentConfirmation</PageTitle>
 
-<PageTitle>FineDetails</PageTitle>
-
-<h1>Input Fine Details</h1>
+<h1>Payment Confirmation</h1>
 
 
 <form>
@@ -14,15 +13,13 @@
   <input type="text" id="onlineaccountID" name="onlineaccountID">
 </form>
 
-<img src="finenotice75.png" class="mx-auto d-block"><br>
-
 <div class="alert alert-danger">
   <strong>Warning!</strong> Indicates a successful or positive action.
 </div>
 
-<button class="btn btn-primary" @onclick ="GoBack">BACK</button> 
+<button class="btn btn-primary" @onclick ="GoBack">RETURN TO HOME </button> 
 
-<button class="btn btn-secondary" @onclick ="GoTo" id="right-button" >NEXT</button> 
+
 
 
 @code {
@@ -33,11 +30,5 @@
         NavigationManager.NavigateTo("/", true); 
     }
     
-    private void GoTo()
-    {
-        NavigationManager.NavigateTo("/finepayment", true); 
-    }
+    
 }
-
-
-
