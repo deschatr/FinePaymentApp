@@ -1,9 +1,24 @@
-﻿@page "/"
+﻿
 
-<PageTitle>Index</PageTitle>
+@page "/"
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<PageTitle>TVLicensefine</PageTitle>
+
+<h1>TV License Fine Payment</h1>
+
+This is a page to pay your Northern Ireland TV license fine.
+<br>
+
+<button class="btn btn-primary" @onclick ="GoTo" id="right-button" >START</button> 
+
+
+@code {
+    @inject NavigationManager NavigationManager;
+    
+    private void GoTo()
+    {
+        NavigationManager.NavigateTo("/finedetails", true); 
+    }
+}
