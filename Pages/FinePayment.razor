@@ -1,5 +1,37 @@
-﻿<h3>FinePayment</h3>
+﻿@page "/finepayment" 
+
+
+<PageTitle>FinePayment</PageTitle>
+
+<h1>Payment Details</h1>
+
+
+<form>
+  <label for="casereference">Case Reference:</label><br>
+  <input type="text" id="casereference" name="casereference"><br>
+  <label for="onlineaccountID">Online Account Reference:</label><br>
+  <input type="text" id="onlineaccountID" name="onlineaccountID">
+</form>
+
+<div class="alert alert-danger">
+  <strong>Warning!</strong> Indicates a successful or positive action.
+</div>
+
+<button class="btn btn-primary" @onclick ="GoBack">BACK</button> 
+
+<button class="btn btn-secondary" @onclick ="GoTo" id="right-button" >NEXT</button> 
+
 
 @code {
-
+    @inject NavigationManager NavigationManager;
+    
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("finedetails", true); 
+    }
+    
+    private void GoTo()
+    {
+        NavigationManager.NavigateTo("/paymentconfirmation", true); 
+    }
 }
