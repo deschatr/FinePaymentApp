@@ -1,5 +1,3 @@
-@page "/finedetails"
-
 @inject NavigationManager NavigationManager
 @inject IFinePaymentService finePaymentService
 @using FinePaymentManagement
@@ -27,6 +25,13 @@
     <button class="btn btn-secondary" type="submit"> NEXT</button>
 
 </EditForm>
+
+<img src="finenotice75.png" class="mx-auto d-block"><br>
+
+<div class="alert alert-danger">
+  <strong>Warning!</strong> Indicates a successful or positive action.
+</div>
+
 
 @code {
 
@@ -60,6 +65,7 @@
     {
         NavigationManager.NavigateTo("/", true); 
     }
-
 }
+
+
 

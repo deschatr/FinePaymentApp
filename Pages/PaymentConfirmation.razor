@@ -1,9 +1,9 @@
-﻿@page "/finepayment" 
+@page "/paymentconfirmation" 
 
 
-<PageTitle>FinePayment</PageTitle>
+<PageTitle>PaymentConfirmation</PageTitle>
 
-<h1>Payment Details</h1>
+<h1>Payment Confirmation</h1>
 
 
 <form>
@@ -17,9 +17,9 @@
   <strong>Warning!</strong> Indicates a successful or positive action.
 </div>
 
-<button class="btn btn-primary" @onclick ="GoBack">BACK</button> 
+<button class="btn btn-primary" @onclick ="GoBack">RETURN TO HOME </button> 
 
-<button class="btn btn-secondary" @onclick ="GoTo" id="right-button" >NEXT</button> 
+
 
 
 @code {
@@ -27,11 +27,8 @@
     
     private void GoBack()
     {
-        NavigationManager.NavigateTo("finedetails", true); 
+        NavigationManager.NavigateTo("/", true); 
     }
     
-    private void GoTo()
-    {
-        NavigationManager.NavigateTo("/paymentconfirmation", true); 
-    }
+    
 }
