@@ -8,7 +8,40 @@
 <h1>Payment Details</h1>
 
 
-<form>
+<EditForm Model=@formItems OnValidSubmit=@HandleValidSubmit>
+    <DataAnnotationsValidator />
+
+    <label>
+        Card Type:        
+        <InputText @bind-Value=formItems.CardType id="cardtype"/>
+    </label><br><br>
+    <label>
+        Card Number:
+        <InputText @bind-Value=formItems.CardNumber id="cardnumber"/>
+    </label><br><br>
+
+
+    @* Not sure how to handle this Date with this EditForm as it requires a string *@
+    
+
+    @* <label>
+        Expiry Date:
+        <InputText @bind-Value=formItems.ExpiryDate id="expirydate"/>
+    </label><br><br> *@
+    
+    <label>
+        CSV:
+        <InputText @bind-Value=formItems.Csv id="csv"/>
+    </label><br><br> 
+
+    <br>
+    <button class="btn btn-primary" @onclick=GoBack>CANCEL</button> 
+
+    <button class="btn btn-secondary" type="submit"> NEXT</button>
+
+</EditForm>
+
+@* <form>
   <label for="casereference">Case Reference:</label><br>
   <input type="text" id="casereference" name="casereference"><br>
   <label for="onlineaccountID">Online Account Reference:</label><br>
@@ -17,15 +50,37 @@
 
 <div class="alert alert-danger">
   <strong>Warning!</strong> Indicates a successful or positive action.
-</div>
+</div> *@
 
-<button class="btn btn-primary" @onclick ="GoBack">BACK</button> 
 
-<button class="btn btn-secondary" @onclick ="GoTo" id="right-button" >NEXT</button> 
 
 
 @code {
-    
+     private PaymentDetailsFormItems formItems = new PaymentDetailsFormItems();
+
+    private async void HandleValidSubmit()
+    {
+
+       @* // find the FinePayment that corresponds to the formDetails
+        // check if PaymentFine exists
+        // check is Payment completed
+        // forward to payment form
+
+        var paymentDetails = await finePaymentService.SearchFinePayment(formItems.CaseReference,formItems.OnlineAccountReference);
+
+        if (finePayment == null)
+        {
+            // doesn't exist -> details wrong?
+        }
+        else if (finePayment.PaymentCompleted)
+        {
+            // payment already done
+        }
+        else
+        {
+            // proceed to payment -> Navigate
+        } *@
+    } 
     private void GoBack()
     {
         NavigationManager.NavigateTo("finedetails", true); 

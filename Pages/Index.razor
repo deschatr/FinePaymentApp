@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject NavigationManager NavigationManager;
 
 <PageTitle>TVLicensefine</PageTitle>
 
@@ -10,7 +11,7 @@ This is a page to pay your Northern Ireland TV license fine.
 <button class="btn btn-primary" @onclick ="GoTo" id="right-panel-link" >START</button> 
 
 @code {
-    @inject NavigationManager NavigationManager;
+    
     
     private void GoTo()
     {
