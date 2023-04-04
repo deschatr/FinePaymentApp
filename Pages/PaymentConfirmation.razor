@@ -1,5 +1,6 @@
 @page "/paymentconfirmation" 
 
+@inject NavigationManager NavigationManager;
 
 <PageTitle>PaymentConfirmation</PageTitle>
 
@@ -8,14 +9,12 @@
 
 <form>
   <label for="casereference">Case Reference:</label><br>
-  <input type="text" id="casereference" name="casereference"><br>
+  <input type="text" id="casereference" name="casereference"><br><br>
   <label for="onlineaccountID">Online Account Reference:</label><br>
   <input type="text" id="onlineaccountID" name="onlineaccountID">
-</form>
+</form><br><br>
 
-<div class="alert alert-danger">
-  <strong>Warning!</strong> Indicates a successful or positive action.
-</div>
+
 
 <button class="btn btn-primary" @onclick ="GoBack">RETURN TO HOME </button> 
 
@@ -23,9 +22,8 @@
 
 
 @code {
-    @inject NavigationManager NavigationManager;
     
-    private void GoBack()
+        private void GoBack()
     {
         NavigationManager.NavigateTo("/", true); 
     }

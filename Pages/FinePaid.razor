@@ -1,0 +1,21 @@
+@page "/finepaid"
+
+@inject NavigationManager NavigationManager;
+
+<PageTitle>PaymentMade</PageTitle>
+
+<h1>Payment Made</h1>
+
+This fine has been paid for.
+<br>
+
+<button class="btn btn-primary" @onclick ="GoTo" id="right-panel-link" >BACK TO HOME</button> 
+
+@code {
+    
+    
+    private void GoTo()
+    {
+        NavigationManager.NavigateTo("/", true); 
+    }
+}
