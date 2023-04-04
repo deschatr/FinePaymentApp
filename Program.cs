@@ -1,6 +1,11 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.Net.Http.Headers;
 using FinePaymentApp.Data;
+using FinePaymentManagement;
+
+const string baseAddress = "http://localhost:5168/";
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +13,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+
+builder.Services.AddHttpClient<IFinePaymentService,FinePaymentService>("FinePaymentAPI", httpClient =>
+{
+    httpClient.BaseAddress = new Uri(baseAddress);
+    httpClient.DefaultRequestHeaders.Add(HeaderNames.Accept,"application/json");
+    httpClient.DefaultRequestHeaders.Add(HeaderNames.UserAgent,"FinePaymentApp/0.0");
+});
 
 var app = builder.Build();
 
@@ -29,3 +41,4 @@ app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
 app.Run();
+
