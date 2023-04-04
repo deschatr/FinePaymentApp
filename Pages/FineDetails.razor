@@ -1,19 +1,28 @@
-@page "/finedetails"
 
-<h3>FineDetails</h3>
+@page "/finedetails" 
+
 
 <PageTitle>FineDetails</PageTitle>
 
 <h1>Input Fine Details</h1>
 
 
+<form>
+  <label for="casereference">Case Reference:</label><br>
+  <input type="text" id="casereference" name="casereference"><br>
+  <label for="onlineaccountID">Online Account Reference:</label><br>
+  <input type="text" id="onlineaccountID" name="onlineaccountID">
+</form>
+
+<img src="finenotice75.png" class="mx-auto d-block"><br>
+
+<div class="alert alert-danger">
+  <strong>Warning!</strong> Indicates a successful or positive action.
+</div>
+
 <button class="btn btn-primary" @onclick ="GoBack">BACK</button> 
 
 <button class="btn btn-secondary" > NEXT</button>
-
-
-
-
 
 @code {
     @inject NavigationManager NavigationManager;
@@ -23,4 +32,5 @@
         NavigationManager.NavigateTo("/", true); 
     }
 }
+
 
