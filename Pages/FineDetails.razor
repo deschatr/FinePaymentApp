@@ -1,26 +1,65 @@
 @page "/finedetails"
 
+@inject NavigationManager NavigationManager
+@inject IFinePaymentService finePaymentService
+@using FinePaymentManagement
+
 <h3>FineDetails</h3>
 
 <PageTitle>FineDetails</PageTitle>
 
 <h1>Input Fine Details</h1>
 
+<EditForm Model=@formItems OnValidSubmit=@HandleValidSubmit>
+    <DataAnnotationsValidator />
 
-<button class="btn btn-primary" @onclick ="GoBack">BACK</button> 
+    <label>
+        Case Reference:
+        <InputText @bind-Value=formItems.CaseReference id="caseref"/>
+    </label><br><br>
+    <label>
+        OnlineAccountReference:
+        <InputText @bind-Value=formItems.OnlineAccountReference id="onlineaccountref"/>
+    </label><br><br>
 
-<button class="btn btn-secondary" > NEXT</button>
+    <button class="btn btn-primary" @onclick=GoBack>CANCEL</button> 
 
+    <button class="btn btn-secondary" type="submit"> NEXT</button>
 
-
-
+</EditForm>
 
 @code {
-    @inject NavigationManager NavigationManager;
+
+    private FineDetailsFormItems formItems = new FineDetailsFormItems();
+
+    private async void HandleValidSubmit()
+    {
+
+        // find the FinePayment that corresponds to the formDetails
+        // check if PaymentFine exists
+        // check is Payment completed
+        // forward to payment form
+
+        var finePayment = await finePaymentService.SearchFinePayment(formItems.CaseReference,formItems.OnlineAccountReference);
+
+        if (finePayment == null)
+        {
+            // doesn't exist -> details wrong?
+        }
+        else if (finePayment.PaymentCompleted)
+        {
+            // payment already done
+        }
+        else
+        {
+            // proceed to payment -> Navigate
+        }
+    }
     
     private void GoBack()
     {
         NavigationManager.NavigateTo("/", true); 
     }
+
 }
 
