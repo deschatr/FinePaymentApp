@@ -1,0 +1,26 @@
+@page "/finedetails"
+
+<h3>FineDetails</h3>
+
+<PageTitle>FineDetails</PageTitle>
+
+<h1>Input Fine Details</h1>
+
+
+<button class="btn btn-primary" @onclick ="GoBack">BACK</button> 
+
+<button class="btn btn-secondary" > NEXT</button>
+
+
+
+
+
+@code {
+    @inject NavigationManager NavigationManager;
+    
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/", true); 
+    }
+}
+
