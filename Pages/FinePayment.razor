@@ -1,27 +1,68 @@
 ﻿@layout HiddenLayout
-@page "/finepayment" 
-
+@page "/finepayment/{Id}"
+@inject IFinePaymentService finePaymentService
 @inject NavigationManager NavigationManager;
     
 
 <PageTitle>FinePayment</PageTitle>
-
+<br><br>
+<div class="col-8 offset-1">
 <h1>Payment Details</h1>
-
+<br><br>
+<h3> Amount to be paid: £@amount </h3>
+<br><br>
+</div>
 
 <EditForm Model=@formItems OnValidSubmit=@HandleValidSubmit>
     <DataAnnotationsValidator />
 
-    <label>
-        Card Type:        
-        <InputText @bind-Value=formItems.CardType id="cardtype"/>
-    </label><br><br>
-    <label>
-        Card Number:
-        <InputText @bind-Value=formItems.CardNumber id="cardnumber"/>
-    </label><br><br>
+<div class="col-8 offset-1">
+        <div class="form-group row">
+            <div class="col-4">
+                <span class ="input-group-text"> Cardholders Name:</span> 
+                <!-- <label>Cardholder label</label> -->
+            </div>
+        </div>
 
+        <div class="form-group row">
+            <div class="col-8">
+                 @* <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div> *@
+                 <InputText class="form-control" @bind-Value=formItems.CardName id="cardname"/> 
+            </div>
+        </div>
+    
+     <br><br>
+    
+        <div class="form-group row">
+            <div class="col-4">
+                <span class ="input-group-text"> Card Type:</span> 
+                <!-- <label>Cardholder label</label> -->
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-8">
+                 @* <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div> *@
+                 <InputText class="form-control" @bind-Value=formItems.CardType id="cardtype"/> 
+            </div>
+        </div><br><br>
 
+       <div class="form-group row">
+            <div class="col-4">
+                <span class ="input-group-text"> Card Number:</span> 
+                <!-- <label>Cardholder label</label> -->
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-8">
+                 @* <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div> *@
+                 <InputText class="form-control" @bind-Value=formItems.CardNumber id="cardnumber"/> 
+            </div>
+        </div><br><br>
+
+    
+   
     @* Not sure how to handle this Date with this EditForm as it requires a string *@
     
 
@@ -30,39 +71,58 @@
         <InputText @bind-Value=formItems.ExpiryDate id="expirydate"/>
     </label><br><br> *@
     
-    <label>
-        CSV:
-        <InputText @bind-Value=formItems.Csv id="csv"/>
-    </label><br><br> 
+
+        <div class="form-group row">
+            <div class="col-4">
+                <span class ="input-group-text"> CSV:</span> 
+                <!-- <label>Cardholder label</label> -->
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-8">
+                 @* <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div> *@
+                 <InputText class="form-control" @bind-Value=formItems.Csv id="csv"/> 
+            </div>
+        </div><br><br>
+
+    
+    
 
     <br>
+ @* Formatting buttons *@
 
-    <div class = "col-1">
-    <button class="btn btn-primary" @onclick=GoBack>CANCEL</button> 
-    </div>
+        <div class="form-group row">
+            <div class="col-3">
+            <button class="btn btn-secondary btn-lg form-control" @onclick=GoBack>CANCEL</button>
+            </div>
+            <div class="col-3 offset-2">
+            <button class="btn btn-primary btn-lg form-control" type="submit"> NEXT</button>
+            </div>
+        </div>
+</div>
 
-    <div class = "col-8">
-    <button class="btn btn-secondary" type="submit"> NEXT</button>
-    </div>
+
+
+
 </EditForm>
-
-@* <form>
-  <label for="casereference">Case Reference:</label><br>
-  <input type="text" id="casereference" name="casereference"><br>
-  <label for="onlineaccountID">Online Account Reference:</label><br>
-  <input type="text" id="onlineaccountID" name="onlineaccountID">
-</form>
-
-<div class="alert alert-danger">
-  <strong>Warning!</strong> Indicates a successful or positive action.
-</div> *@
-
-
 
 
 @code {
-     private PaymentDetailsFormItems formItems = new PaymentDetailsFormItems();
 
+    [Parameter]
+    public string? Id { get; set; }
+    public float amount { get; set; }
+    public string caseRef {get; set; }
+    private PaymentDetailsFormItems formItems = new PaymentDetailsFormItems();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        var finePayment = await finePaymentService.GetFinePayment(long.Parse(Id));
+        caseRef = finePayment.CaseReference;
+        amount = finePayment.Amount;
+    }
+   
     private async void HandleValidSubmit()
     {
 

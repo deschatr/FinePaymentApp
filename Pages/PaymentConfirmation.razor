@@ -1,31 +1,51 @@
-@page "/paymentconfirmation" 
+@page "/paymentconfirmation/{Id}"
 
-@inject NavigationManager NavigationManager;
-
-<PageTitle>PaymentConfirmation</PageTitle>
-
-<h1>Payment Confirmation</h1>
+@inject NavigationManager NavigationManager
+@inject IFinePaymentService finePaymentService
 
 
-<form>
-  <label for="casereference">Case Reference:</label><br>
-  <input type="text" id="casereference" name="casereference"><br><br>
-  <label for="onlineaccountID">Online Account Reference:</label><br>
-  <input type="text" id="onlineaccountID" name="onlineaccountID">
-</form><br><br>
+<PageTitle>Payment confirmation</PageTitle>
 
-
-
-<button class="btn btn-primary" @onclick ="GoBack">RETURN TO HOME </button> 
-
-
+<p> Payment Reference: @paymentRef </p>
 
 
 @code {
+    [Parameter]
+    public string? Id { get; set; }
+
+    public float amount { get; set; } // delete if not needed
+    public string caseRef { get; set; } // delete if not needed
+    public string paymentRef { get; set; }
     
-        private void GoBack()
+    protected override async Task OnInitializedAsync()
+    {
+        var finePayment = await finePaymentService.GetFinePayment(long.Parse(Id));
+        caseRef = finePayment.CaseReference;
+        amount = finePayment.Amount;
+        finePayment.PaymentCompleted = true;
+        finePayment.PaymentDate = DateTime.Now;
+        paymentRef = GeneratePaymentReference(18);
+        finePayment.PaymentReference = paymentRef;
+        await finePaymentService.SetFinePayment(finePayment);
+        Console.WriteLine($"Payment processed: {finePayment.PaymentCompleted} - {finePayment.PaymentDate} - {finePayment.PaymentReference}");
+    }
+    
+    private void GoBack()
     {
         NavigationManager.NavigateTo("/", true); 
+    }
+
+    private string GeneratePaymentReference(int length)
+    {
+        string str = "0123456789";
+        string result = System.String.Empty;
+        var rnd = new Random();
+
+        for (int i=0; i<length; i++) {
+            result += str[rnd.Next(str.Length)];
+        }
+
+        return result;
     }
     
     

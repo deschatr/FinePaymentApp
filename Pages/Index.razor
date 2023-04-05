@@ -6,14 +6,32 @@
 
 <h1>TV License Fine Payment</h1>
 <br><br>
-This is a page to pay your Northern Ireland TV license fine.
+<h3>This is a page to pay your Northern Ireland TV license fine.</h3>
 <br><br>
 
-<button class="btn btn-primary" @onclick ="GoTo" id="right-panel-link" >Pay Online</button> 
-<button class="btn btn-primary" @onclick ="PostPay" id="right-panel-link" >Pay by Post</button> 
-<br><br>
-<button class="btn btn-primary" @onclick ="PhonePay" id="right-panel-link" >Pay by Phone</button> 
-<button class="btn btn-secondary" @onclick ="CashPay" id="right-panel-link" >Pay in Cash</button> 
+
+<div class="col-8 offset -1"> 
+    <div class="form-group row">
+        <div class="col-12">
+        <button class="btn btn-primary form-control btn-lg" @onclick ="GoTo" id="right-panel-link" >Pay Online</button>
+        <br><br>
+        </div>
+    
+        <div class="col-12">
+        <button class="btn btn-secondary form-control btn-lg" @onclick ="PostPay" id="right-panel-link" >Pay by Post</button>
+        <br><br>
+        </div>
+        
+        <div class="col-12">
+        <button class="btn btn-primary form-control btn-lg" @onclick ="PhonePay" id="right-panel-link" >Pay by Phone</button> 
+        <br><br>
+        </div>
+        
+        <div class="col-12">
+        <button class="btn btn-secondary form-control btn-lg" @onclick ="CashPay" id="right-panel-link" >Pay in Cash</button>
+        </div>
+    </div>
+</div>
 
 @code {
     
