@@ -15,21 +15,41 @@
 <EditForm Model=@formItems OnValidSubmit=@HandleValidSubmit>
     <DataAnnotationsValidator />
 
+@* Formatting of input fields and image *@
+    <div class="col-8 offset -1">
+    <div class="form-group row">
     <label>
-        Case Reference:        
+        Case Reference: 
+        <div class="col-6 offset -6">    
         <InputText @bind-Value=formItems.CaseReference id="caseref"/>
-    </label><br><br>
+        </div>   
+    </label><br><br><br>
     <label>
         OnlineAccountReference:
+        <div class="col-6 offset -6">  
         <InputText @bind-Value=formItems.OnlineAccountReference id="onlineaccountref"/>
-    </label><br><br>
-    <br>
+        </div>   
+    </label>
+    <br><br><br>
+
     <img src="finenotice75.png" class="mx-auto d-block"><br>
     <br>
-    <button class="btn btn-primary" @onclick=GoBack>CANCEL</button> 
+    </div>
+    </div>
 
-    <button class="btn btn-secondary" type="submit"> NEXT</button>
+<br><br>
 
+@* Formatting of buttons *@
+    <div class="col-8 offset -1">
+        <div class="form-group row">
+        <div class="col-4">
+        <button class="btn btn-secondary" @onclick=GoBack>CANCEL</button> 
+        </div>
+        <div class="col-4">
+        <button class="btn btn-primary" type="submit"> NEXT</button>
+        </div>
+        </div>
+    </div>
 </EditForm>
 
 

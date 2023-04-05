@@ -12,14 +12,27 @@
 <EditForm Model=@formItems OnValidSubmit=@HandleValidSubmit>
     <DataAnnotationsValidator />
 
+    <div class="col-8 offset -1">
+    <div class="form-group row">
     <label>
-        Card Type:        
+        Cardholders Name:   
+        <div class="col-6 offset -6">      
+        <InputText @bind-Value=formItems.CardName id="cardname"/>
+        </div>
+    </label><br><br>
+    <label>
+        Card Type:
+        <div class="dropdown col-6 offset -6">            
         <InputText @bind-Value=formItems.CardType id="cardtype"/>
+        </div>
     </label><br><br>
     <label>
         Card Number:
+        <div class="col-6 offset -6">    
         <InputText @bind-Value=formItems.CardNumber id="cardnumber"/>
+        </div>
     </label><br><br>
+    
 
 
     @* Not sure how to handle this Date with this EditForm as it requires a string *@
@@ -32,17 +45,25 @@
     
     <label>
         CSV:
+        <div class="col-6 offset -6">    
         <InputText @bind-Value=formItems.Csv id="csv"/>
+        </div>
     </label><br><br> 
+    </div>
+    </div>
 
     <br>
 
-    <div class = "col-1">
-    <button class="btn btn-primary" @onclick=GoBack>CANCEL</button> 
-    </div>
-
-    <div class = "col-8">
-    <button class="btn btn-secondary" type="submit"> NEXT</button>
+    @* Formatting buttons *@
+    <div class="col-8 offset -1">
+    <div class="form-group row">
+        <div class="col-4">
+        <button class="btn btn-secondary" @onclick=GoBack>CANCEL</button> 
+        </div>
+        <div class="col-4">
+        <button class="btn btn-primary" type="submit"> NEXT</button>
+        </div>
+        </div>
     </div>
 </EditForm>
 
