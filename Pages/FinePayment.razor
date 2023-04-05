@@ -5,9 +5,11 @@
     
 
 <PageTitle>FinePayment</PageTitle>
-
+<br><br>
+<div class="col-8 offset-1">
 <h1>Payment Details</h1>
-
+<br><br>
+</div>
 
 <EditForm Model=@formItems OnValidSubmit=@HandleValidSubmit>
     <DataAnnotationsValidator />
@@ -22,27 +24,43 @@
 
         <div class="form-group row">
             <div class="col-8">
-                 <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div>
-                 @* <InputText @bind-Value=formItems.CardName id="cardname"/> *@
+                 @* <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div> *@
+                 <InputText class="form-control" @bind-Value=formItems.CardName id="cardname"/> 
             </div>
         </div>
-    </div>
+    
      <br><br>
     
-    
-        <span class ="input-group-text"> Card Type:</span> 
-            <div class="dropdown col-6 offset-6">            
-        <InputText @bind-Value=formItems.CardType id="cardtype"/>
+        <div class="form-group row">
+            <div class="col-4">
+                <span class ="input-group-text"> Card Type:</span> 
+                <!-- <label>Cardholder label</label> -->
             </div>
-    <br><br>
-    
-    
-        <span class ="input-group-text"> Card Number:</span> 
-        <div class="col-6 offset -6">    
-        <InputText @bind-Value=formItems.CardNumber id="cardnumber"/>
         </div>
-    <br><br>
+        
+        <div class="form-group row">
+            <div class="col-8">
+                 @* <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div> *@
+                 <InputText class="form-control" @bind-Value=formItems.CardType id="cardtype"/> 
+            </div>
+        </div><br><br>
 
+       <div class="form-group row">
+            <div class="col-4">
+                <span class ="input-group-text"> Card Number:</span> 
+                <!-- <label>Cardholder label</label> -->
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-8">
+                 @* <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div> *@
+                 <InputText class="form-control" @bind-Value=formItems.CardNumber id="cardnumber"/> 
+            </div>
+        </div><br><br>
+
+    
+   
     @* Not sure how to handle this Date with this EditForm as it requires a string *@
     
 
@@ -51,30 +69,42 @@
         <InputText @bind-Value=formItems.ExpiryDate id="expirydate"/>
     </label><br><br> *@
     
-    <label>
-        CSV:
-        <div class="col-6 offset -6">    
-        <InputText @bind-Value=formItems.Csv id="csv"/>
+
+ <div class="form-group row">
+            <div class="col-4">
+                <span class ="input-group-text"> CSV:</span> 
+                <!-- <label>Cardholder label</label> -->
+            </div>
         </div>
-    </label><br><br> 
-    </div>
+        
+        <div class="form-group row">
+            <div class="col-8">
+                 @* <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div> *@
+                 <InputText class="form-control" @bind-Value=formItems.Csv id="csv"/> 
+            </div>
+        </div><br><br>
+
+    
     
 
     <br>
+ @* Formatting buttons *@
 
-    @* Formatting buttons *@
-    <div class="col-8 offset -1">
-    <div class="form-group row">
-        <div class="col-4">
-        <button class="btn btn-secondary" @onclick=GoBack>CANCEL</button> 
+        <div class="form-group row">
+            <div class="col-4">
+            <button class="btn btn-secondary btn-lg" @onclick=GoBack>CANCEL</button>
+            </div>
+            <div class="col-4 offset-3">
+            <button class="btn btn-primary btn-lg" type="submit"> NEXT</button>
         </div>
-        <div class="col-4">
-        <button class="btn btn-primary" type="submit"> NEXT</button>
-        </div>
-        </div>
-    </div>
+</div>
+
+
+
 </EditForm>
 
+
+   
 @* <form>
   <label for="casereference">Case Reference:</label><br>
   <input type="text" id="casereference" name="casereference"><br>
