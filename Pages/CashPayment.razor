@@ -1,17 +1,38 @@
 @page "/cashpayment"
+@inject NavigationManager NavigationManager;
 
-<h3>Info</h3>
+<PageTitle>phonepayment</PageTitle>
 
-<PageTitle>Information</PageTitle>
+<h1>To Pay By Cash</h1>
+<br>
+<p>If you would like pay the the fine amount by cash you can do this through any local <strong> <a href="https://www.nidirect.gov.uk/contacts/northern-ireland-courts-and-tribunals-service">Court Office</a>  
+</strong> or through the <strong> <a href="https://www.nidirect.gov.uk/contacts/northern-ireland-courts-and-tribunals-service-fine-collection-and-enforcement-services">Fine Collection and Enforcement Service</a> </strong> </p>
+<h3>Help paying a court fine</h3>
+<p>If you’re finding it difficult to pay your financial penalty, contact the <strong> <a href="https://www.justice-ni.gov.uk/articles/fine-collection-and-enforcement-service"> Fine Collection and Enforcement Service.</a> </strong>   </p>
+<br>
+<h3>Who to contact if you want to contest the fine</h3>
+<p>If you would like to appeal a fine then you must contact the <strong>Northern Ireland Courts and Tribunals Service - Customer Service Centre
+Contact details</strong> for the Northern Ireland Courts and Tribunals Service Customer Service Centre.</p>
+<p>The Customer Service Centre can help you with queries about jury service and also the payment of Covid and Court Fines before 28 days.</p>
+<br>
+PO Box 256
+<br>
+Londonderry
+<br>
+United Kingdom
+<br>
+Phone: 0300 200 7812
+<br>
+Email: customerservicecentre@courtsni.gov.uk
 
-<h1>Information</h1>
+<br>
+<br>
 
-More payment options
-
-Who to contact if you want to contest the fine
-
-Other relivant info
+ <button class="btn btn-primary" @onclick=GoBack>Return to Home Page</button> 
 
 @code {
-  
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/", true); 
+    }
 }
