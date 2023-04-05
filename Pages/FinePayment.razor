@@ -14,7 +14,7 @@
 <EditForm Model=@formItems OnValidSubmit=@HandleValidSubmit>
     <DataAnnotationsValidator />
 
-    <div class="col-8 offset-1">
+<div class="col-8 offset-1">
         <div class="form-group row">
             <div class="col-4">
                 <span class ="input-group-text"> Cardholders Name:</span> 
@@ -70,7 +70,7 @@
     </label><br><br> *@
     
 
- <div class="form-group row">
+        <div class="form-group row">
             <div class="col-4">
                 <span class ="input-group-text"> CSV:</span> 
                 <!-- <label>Cardholder label</label> -->
@@ -91,32 +91,19 @@
  @* Formatting buttons *@
 
         <div class="form-group row">
-            <div class="col-4">
-            <button class="btn btn-secondary btn-lg" @onclick=GoBack>CANCEL</button>
+            <div class="col-3">
+            <button class="btn btn-secondary btn-lg form-control" @onclick=GoBack>CANCEL</button>
             </div>
-            <div class="col-4 offset-3">
-            <button class="btn btn-primary btn-lg" type="submit"> NEXT</button>
+            <div class="col-3 offset-2">
+            <button class="btn btn-primary btn-lg form-control" type="submit"> NEXT</button>
+            </div>
         </div>
 </div>
 
 
 
+
 </EditForm>
-
-
-   
-@* <form>
-  <label for="casereference">Case Reference:</label><br>
-  <input type="text" id="casereference" name="casereference"><br>
-  <label for="onlineaccountID">Online Account Reference:</label><br>
-  <input type="text" id="onlineaccountID" name="onlineaccountID">
-</form>
-
-<div class="alert alert-danger">
-  <strong>Warning!</strong> Indicates a successful or positive action.
-</div> *@
-
-
 
 
 @code {
