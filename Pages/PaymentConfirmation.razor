@@ -24,8 +24,8 @@
         amount = finePayment.Amount;
         finePayment.PaymentCompleted = true;
         finePayment.PaymentDate = DateTime.Now;
-        paymentRef = GeneratePaymentReference(18)
-        finePayment.PaymentReference = paymentRefl;
+        paymentRef = GeneratePaymentReference(18);
+        finePayment.PaymentReference = paymentRef;
         await finePaymentService.SetFinePayment(finePayment);
         Console.WriteLine($"Payment processed: {finePayment.PaymentCompleted} - {finePayment.PaymentDate} - {finePayment.PaymentReference}");
     }
