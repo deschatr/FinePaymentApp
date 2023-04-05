@@ -6,7 +6,7 @@
 
 <PageTitle>Payment confirmation</PageTitle>
 
-<p> Amount: @amount </p>
+<p> Payment Reference: @paymentRef </p>
 
 
 @code {
@@ -14,7 +14,8 @@
     public string? Id { get; set; }
 
     public float amount { get; set; } // delete if not needed
-    public string caseRef {get; set; } // delete if not needed
+    public string caseRef { get; set; } // delete if not needed
+    public string paymentRef { get; set; }
     
     protected override async Task OnInitializedAsync()
     {
@@ -23,7 +24,8 @@
         amount = finePayment.Amount;
         finePayment.PaymentCompleted = true;
         finePayment.PaymentDate = DateTime.Now;
-        finePayment.PaymentReference = GeneratePaymentReference(18);
+        paymentRef = GeneratePaymentReference(18)
+        finePayment.PaymentReference = paymentRefl;
         await finePaymentService.SetFinePayment(finePayment);
         Console.WriteLine($"Payment processed: {finePayment.PaymentCompleted} - {finePayment.PaymentDate} - {finePayment.PaymentReference}");
     }
