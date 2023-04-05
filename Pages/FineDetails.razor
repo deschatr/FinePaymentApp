@@ -56,16 +56,15 @@
 
         if (finePayment == null)
         {
-            Console.WriteLine("finePayment is null");
+            Console.WriteLine("Could not find payment (for many reasons).");
         }
         else if (finePayment.PaymentCompleted)
         {
-            Console.WriteLine("payment is completed");
+            Console.WriteLine("payment was previously completed");
             NavigationManager.NavigateTo("/finepaid", true);
         }
         else
         {
-            Console.WriteLine("payment is going to proceed.");
             NavigationManager.NavigateTo("/finepayment", true);
         }
     }
@@ -75,6 +74,3 @@
         NavigationManager.NavigateTo("/", true); 
     }
 }
-
-
-
