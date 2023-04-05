@@ -51,14 +51,16 @@
         // check is Payment completed
         // forward to payment form
 
+        Console.WriteLine($"Case reference: {formItems.CaseReference}, online account reference: {formItems.OnlineAccountReference}");
         var finePayment = await finePaymentService.SearchFinePayment(formItems.CaseReference,formItems.OnlineAccountReference);
 
         if (finePayment == null)
         {
-            // doesn't exist -> details wrong?
+            Console.WriteLine("Could not find payment (for many reasons).");
         }
         else if (finePayment.PaymentCompleted)
         {
+            Console.WriteLine("payment was previously completed");
             NavigationManager.NavigateTo("/finepaid", true);
         }
         else
@@ -72,6 +74,3 @@
         NavigationManager.NavigateTo("/", true); 
     }
 }
-
-
-
