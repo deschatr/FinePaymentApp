@@ -1,6 +1,6 @@
 ﻿@layout HiddenLayout
-@page "/finepayment" 
-
+@page "/finepayment/{Id}"
+@inject IFinePaymentService finePaymentService
 @inject NavigationManager NavigationManager;
     
 
@@ -8,6 +8,8 @@
 <br><br>
 <div class="col-8 offset-1">
 <h1>Payment Details</h1>
+<br><br>
+<h3> Amount to be paid: £@amount </h3>
 <br><br>
 </div>
 
@@ -107,8 +109,20 @@
 
 
 @code {
-     private PaymentDetailsFormItems formItems = new PaymentDetailsFormItems();
 
+    [Parameter]
+    public string? Id { get; set; }
+    public float amount { get; set; }
+    public string caseRef {get; set; }
+    private PaymentDetailsFormItems formItems = new PaymentDetailsFormItems();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        var finePayment = await finePaymentService.GetFinePayment(long.Parse(Id));
+        caseRef = finePayment.CaseReference;
+        amount = finePayment.Amount;
+    }
+   
     private async void HandleValidSubmit()
     {
 
