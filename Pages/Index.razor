@@ -9,13 +9,29 @@
 This is a page to pay your Northern Ireland TV license fine.
 <br><br>
 
-<button class="btn btn-primary" @onclick ="GoTo" id="right-panel-link" >START</button> 
+<button class="btn btn-primary" @onclick ="GoTo" id="right-panel-link" >Pay Online</button> 
+<button class="btn btn-primary" @onclick ="PostPay" id="right-panel-link" >Pay by Post</button> 
+<br><br>
+<button class="btn btn-primary" @onclick ="PhonePay" id="right-panel-link" >Pay by Phone</button> 
+<button class="btn btn-secondary" @onclick ="CashPay" id="right-panel-link" >Pay in Cash</button> 
 
 @code {
     
     
     private void GoTo()
     {
-        NavigationManager.NavigateTo("/finedetails", true); 
+        NavigationManager.NavigateTo("finedetails", true); 
+    }
+    private void PhonePay()
+    {
+        NavigationManager.NavigateTo("phonepayment", true); 
+    }
+    private void PostPay()
+    {
+        NavigationManager.NavigateTo("postalpayment", true); 
+    }
+    private void CashPay()
+    {
+        NavigationManager.NavigateTo("cashpayment", true); 
     }
 }
