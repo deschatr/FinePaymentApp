@@ -1,16 +1,54 @@
 @page "/phonepayment"
+@inject NavigationManager NavigationManager;
 
 
 <PageTitle>phonepayment</PageTitle>
 
-<h1>Phone Payment</h1>
+<h1>To Pay By Phone</h1>
+<br>
+If you would like pay the the fine amount over the telephone you can do this
+with a debit or credit card.
+<br>
+You need your case reference number to pay.
+<br>
+Contact:
+Phone
+028 9072 8894
+<br>Email:courtfundsoffice@courtsni.gov.uk
+<br>
+<h3>Help paying a court fine</h3>
+<p>If you’re finding it difficult to pay your financial penalty, contact the Fine Collection and Enforcement Service.  </p>
 
-More payment options
+<h2>Who to contact if you want to contest the fine</h2>
+<br>
+<br>
+<h4>If you would like to appeal a fine then you must contact the <br>Northern Ireland Courts and Tribunals Service - Customer Service Centre</h4>
+<br>
+Contact details for the Northern Ireland Courts and Tribunals Service Customer Service Centre. 
+The Customer Service Centre can help you with queries about jury service and also the payment of Covid and Court Fines before 28 days.
+<br>
+<br>
+<br>
+PO Box 256
+<br>
+Londonderry
+<br>
+United Kingdom
+<br>
+Phone
+<br>
+0300 200 7812
+<br>
+Email
+<br>
+customerservicecentre@courtsni.gov.uk
+<br>
 
-Who to contact if you want to contest the fine
-
-Other relivant info
+ <button class="btn btn-primary" @onclick=GoBack>Return to Home Page</button> 
 
 @code {
-  
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/", true); 
+    }
 }
