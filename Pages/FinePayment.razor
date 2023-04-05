@@ -12,28 +12,36 @@
 <EditForm Model=@formItems OnValidSubmit=@HandleValidSubmit>
     <DataAnnotationsValidator />
 
-    <div class="col-8 offset -1">
-    <div class="form-group row">
-    <label>
-        Cardholders Name:   
-        <div class="col-6 offset -6">      
-        <InputText @bind-Value=formItems.CardName id="cardname"/>
+    <div class="col-8 offset-1">
+        <div class="form-group row">
+            <div class="col-4">
+                <span class ="input-group-text"> Cardholders Name:</span> 
+                <!-- <label>Cardholder label</label> -->
+            </div>
         </div>
-    </label><br><br>
-    <label>
-        Card Type:
-        <div class="dropdown col-6 offset -6">            
+
+        <div class="form-group row">
+            <div class="col-8">
+                 <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div>
+                 @* <InputText @bind-Value=formItems.CardName id="cardname"/> *@
+            </div>
+        </div>
+    </div>
+     <br><br>
+    
+    
+        <span class ="input-group-text"> Card Type:</span> 
+            <div class="dropdown col-6 offset-6">            
         <InputText @bind-Value=formItems.CardType id="cardtype"/>
-        </div>
-    </label><br><br>
-    <label>
-        Card Number:
+            </div>
+    <br><br>
+    
+    
+        <span class ="input-group-text"> Card Number:</span> 
         <div class="col-6 offset -6">    
         <InputText @bind-Value=formItems.CardNumber id="cardnumber"/>
         </div>
-    </label><br><br>
-    
-
+    <br><br>
 
     @* Not sure how to handle this Date with this EditForm as it requires a string *@
     
@@ -50,7 +58,7 @@
         </div>
     </label><br><br> 
     </div>
-    </div>
+    
 
     <br>
 
