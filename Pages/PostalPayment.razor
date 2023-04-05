@@ -1,0 +1,23 @@
+@page "/postalpayment"
+@inject NavigationManager NavigationManager;
+    
+
+<PageTitle>PostalPayment</PageTitle>
+
+<h1>Postal Payment</h1>
+
+More payment options
+
+Who to contact if you want to contest the fine
+
+Other relivant info
+<br>
+
+ <button class="btn btn-primary" @onclick=GoBack>Return to Home Page</button> 
+
+@code {
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/", true); 
+    }
+}
