@@ -1,4 +1,3 @@
-
 namespace FinePaymentApp.Data;
 public class FinePayment
 {

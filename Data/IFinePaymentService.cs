@@ -1,5 +1,6 @@
 using FinePaymentApp.Data;
 
+
 public interface IFinePaymentService
 {
     Task<IEnumerable<FinePayment>> GetFinePayments();
