@@ -1,0 +1,21 @@
+@page "/finepayment/{Id}"
+
+@inject IFinePaymentService finePaymentService
+
+<PageTitle>Payment</PageTitle>
+
+<p> Amount: @amount </p>
+
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+    public float amount { get; set; }
+    public string caseRef {get; set; }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        var finePayment = await finePaymentService.GetFinePayment(long.Parse(Id));
+        caseRef = finePayment.CaseReference;
+        amount = finePayment.Amount;
+    }
+}
