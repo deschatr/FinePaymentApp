@@ -7,35 +7,82 @@
 
 
 <PageTitle>FineDetails</PageTitle>
-
-<h1>Input Fine Details</h1>
+<br><br>
+<div class="offset-1">
+    <h1>Input Fine Details</h1>
+</div>
 <br>
+
 
 <EditForm Model=@formItems OnValidSubmit=@HandleValidSubmit>
     <DataAnnotationsValidator />
 
-    <label>
-        Case Reference:        
+@* Formatting of input fields and image *@
+    
+    <div class="col-8 offset-1">
+     
+     
+        <div class="form-group row">
+            <div class="col-4">
+                <span class ="input-group-text"> Case Reference:</span> 
+                <!-- <label>Cardholder label</label> -->
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-8">
+                <InputText class="form-control" @bind-Value=formItems.CaseReference id="caseref"/> 
+            </div>
+        </div><br><br>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <span class ="input-group-text"> Online Account Reference:</span> 
+                <!-- <label>Cardholder label</label> -->
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-8">
+                <InputText class="form-control" @bind-Value=formItems.OnlineAccountReference id="onlineaccountref"/> 
+            </div>
+        </div><br><br>
+
+
+        @* Case Reference: 
+        <div class="col-6 offset -6">    
         <InputText @bind-Value=formItems.CaseReference id="caseref"/>
-    </label><br><br>
+        </div>   
+    </label><br><br><br>
     <label>
+
         OnlineAccountReference:
+        <div class="col-6 offset -6">  
         <InputText @bind-Value=formItems.OnlineAccountReference id="onlineaccountref"/>
-    </label><br><br>
-    <br>
-    <img src="finenotice75.png" class="mx-auto d-block"><br>
-    <br>
-    <button class="btn btn-primary" @onclick=GoBack>CANCEL</button> 
+        </div>   
+    </label>
+    <br><br><br> *@
 
-    <button class="btn btn-secondary" type="submit"> NEXT</button>
+    <img src="finenotice75.png" class="float-start"><br>
 
+    <br><br><br><br>
+    
+
+<br><br>
+
+@* Formatting of buttons *@
+
+        <div class="form-group row">
+            <div class="col-3">
+                <button class="btn btn-secondary btn-lg form-control" @onclick=GoBack>CANCEL</button> 
+            </div>
+            <div class="col-3 offset-2">
+                <button class="btn btn-primary btn-lg form-control" type="submit"> NEXT</button>              
+            </div>
+        </div>
+    
+</div>
 </EditForm>
-
-
-
-@* <div class="alert alert-danger">
-  <strong>Warning!</strong> Indicates a successful or positive action.
-</div> *@
 
 
 @code {
