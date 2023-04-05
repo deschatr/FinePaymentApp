@@ -53,7 +53,7 @@ public class FinePaymentService : IFinePaymentService
         FinePayment? result = null;
         try
         {
-            result = await httpClient.GetFromJsonAsync<FinePayment>(endPoint + $"/search?caseref={caseRef}&onlineaccountref={onlineAccountRef}");
+            result = await httpClient.GetFromJsonAsync<FinePayment>($"{endPoint}/search?caseref={caseRef}&onlineaccountref={onlineAccountRef}");
         }
         catch (HttpRequestException e)
         {

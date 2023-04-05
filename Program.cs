@@ -4,7 +4,7 @@ using Microsoft.Net.Http.Headers;
 using FinePaymentApp.Data;
 using FinePaymentManagement;
 
-const string baseAddress = "https://v1a4g2.azurewebsites.net/api/finepayments/";
+const string baseAddress = "https://v1a4g2.azurewebsites.net/";
 
 
 var builder = WebApplication.CreateBuilder(args);
