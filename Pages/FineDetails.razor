@@ -11,7 +11,6 @@
 <h1>Input Fine Details</h1>
 <br>
 
-
 <EditForm Model=@formItems OnValidSubmit=@HandleValidSubmit>
     <DataAnnotationsValidator />
 
@@ -45,13 +44,6 @@
 
     private async void HandleValidSubmit()
     {
-
-        // find the FinePayment that corresponds to the formDetails
-        // check if PaymentFine exists
-        // check is Payment completed
-        // forward to payment form
-
-        Console.WriteLine($"Case reference: {formItems.CaseReference}, online account reference: {formItems.OnlineAccountReference}");
         var finePayment = await finePaymentService.SearchFinePayment(formItems.CaseReference,formItems.OnlineAccountReference);
 
         if (finePayment == null)
@@ -60,12 +52,11 @@
         }
         else if (finePayment.PaymentCompleted)
         {
-            Console.WriteLine("payment was previously completed");
             NavigationManager.NavigateTo("/finepaid", true);
         }
         else
         {
-            NavigationManager.NavigateTo("/finepayment", true);
+            NavigationManager.NavigateTo($"/finepayment/{finePayment.Id}", true);
         }
     }
     
