@@ -6,10 +6,14 @@ public class PaymentDetailsFormItems
     public string? CardType { get; set; }
 
     [Required]
-    [StringLength(maximumLength: 16, MinimumLength = 16, ErrorMessage = "9 characters please")]
+    [CreditCard]
     public string? CardNumber{ get; set; }
 
-    public DateOnly ExpiryDate { get; set; }
+    [Required]
+    public string? ExpiryMonth { get; set; }
+    
+    [Required]
+    public string? ExpiryYear { get; set; }
 
     [Required]
     [StringLength(maximumLength: 3, MinimumLength = 3, ErrorMessage = "9 characters please")]
