@@ -86,6 +86,9 @@
             </div>
         </div><br><br>
 
+    
+    
+
     <br>
  @* Formatting buttons *@
 
@@ -99,39 +102,57 @@
         </div>
 </div>
 
+
+
+
 </EditForm>
+
 
 @code {
 
     [Parameter]
     public string? Id { get; set; }
-
     public float amount { get; set; }
     public string caseRef {get; set; }
-
     private PaymentDetailsFormItems formItems = new PaymentDetailsFormItems();
     
     protected override async Task OnInitializedAsync()
     {
-        // fetches the fine payment details with Id from the API
         var finePayment = await finePaymentService.GetFinePayment(long.Parse(Id));
-
-        // stores the details in local variables for display
         caseRef = finePayment.CaseReference;
         amount = finePayment.Amount;
     }
    
     private async void HandleValidSubmit()
     {
-        // here we check if the payment is going through....
-        // we'll have to assume that it does and proceed to the payment completed and reference
 
-        NavigationManager.NavigateTo($"paymentconfirmation/{Id}", true); 
+       @* // find the FinePayment that corresponds to the formDetails
+        // check if PaymentFine exists
+        // check is Payment completed
+        // forward to payment form
+
+        var paymentDetails = await finePaymentService.SearchFinePayment(formItems.CaseReference,formItems.OnlineAccountReference);
+
+        if (finePayment == null)
+        {
+            // doesn't exist -> details wrong?
+        }
+        else if (finePayment.PaymentCompleted)
+        {
+            // payment already done
+        }
+        else
+        {
+            // proceed to payment -> Navigate
+        } *@
     } 
-
     private void GoBack()
     {
-        NavigationManager.NavigateTo("/", true); 
+        NavigationManager.NavigateTo("finedetails", true); 
     }
     
+    private void GoTo()
+    {
+        NavigationManager.NavigateTo("/paymentconfirmation", true); 
+    }
 }
