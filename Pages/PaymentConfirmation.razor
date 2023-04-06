@@ -3,11 +3,49 @@
 @inject NavigationManager NavigationManager
 @inject IFinePaymentService finePaymentService
 
+
+
 <PageTitle>Payment confirmation</PageTitle>
 
 <h3>Payment Confirmation</h3>
+<br><br>
 
-<p> Payment Reference: @paymentRef </p>
+<p>Your payment has been processed and confirmed.</p>
+<p>Here is your payment reference:<strong>@paymentRef</strong>  </p>
+
+<br>
+<br>
+<br>
+
+If you would like to receive confirmation of payment by email, please enter your email below and click 'send e-mail confirmation':
+<br>
+
+<br>
+<br>
+<br>
+
+        <div class="col-6 offset-1">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="">E-mail address</span>
+                </div>
+            <input type="text" class="form-control">
+            </div>
+        </div>
+
+<br>
+<br>
+
+
+    <div class="col-8">
+        @* <button type="button" class="btn btn-primary">Return to Home</button> *@
+
+        <button class="btn btn-primary" @onclick=GoBack>Return to Home</button>
+
+         <button type="button" class="btn btn-success">Send e-mail confirmation</button>
+    </div>
+
+
 
 
 @code {
@@ -48,4 +86,5 @@
 
         return result;
     }    
+
 }

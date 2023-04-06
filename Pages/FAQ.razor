@@ -1,4 +1,5 @@
 @page "/faq"
+@inject NavigationManager NavigationManager;
 
 @* <h3>FAQ</h3> *@
 
@@ -33,6 +34,12 @@
     <br />
     <br />
    <strong> FOR MORE INFORMATION PLEASE <a href="/contactus">CONTACT US</a></strong>
+   <br>
+   <br>
+
+   <div class="col-8">
+     <button class="btn btn-primary" @onclick=GoBack>Return to Home Page</button> 
+    </div>
     
 
 
@@ -40,5 +47,9 @@
 
 </body>
 @code {
-  
+     private void GoBack()
+    {
+        NavigationManager.NavigateTo("/", true); 
+    }
 }
+
