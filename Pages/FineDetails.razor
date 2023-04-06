@@ -31,7 +31,8 @@
         
         <div class="form-group row">
             <div class="col-8">
-                <InputText class="form-control" @bind-Value=formItems.CaseReference id="caseref"/> 
+                <InputText class="form-control" @bind-Value=formItems.CaseReference id="caseref" />
+                <ValidationMessage For="() => formItems.CaseReference" />
             </div>
         </div><br><br>
 
@@ -44,7 +45,8 @@
         
         <div class="form-group row">
             <div class="col-8">
-                <InputText class="form-control" @bind-Value=formItems.OnlineAccountReference id="onlineaccountref"/> 
+                <InputText class="form-control" @bind-Value=formItems.OnlineAccountReference id="onlineaccountref" />
+                <ValidationMessage For="() => formItems.OnlineAccountReference" />
             </div>
         </div><br><br>
 
