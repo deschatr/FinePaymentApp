@@ -2,19 +2,32 @@
 
 @inject NavigationManager NavigationManager;
 
-<PageTitle>PaymentMade</PageTitle>
+<PageTitle>No Payment</PageTitle>
 
-<h1>Payment Made</h1>
+   <div class="row">
+        <div class="col py-3">
+            <h1>Nothing to pay</h1>
+        </div>
+    </div>
 
-This fine has been paid for.
-<br>
+    <div class="row">
+        <div class="col">
+            This fine has already been paid.
+        </div>
+    </div>
 
-<button class="btn btn-primary" @onclick ="GoTo" id="right-panel-link" >BACK TO HOME</button> 
+    <div class="form-group row justify-content-start py-3">
+        <div class="col">
+            <div class="d-flex" style="max-width: 592px">
+                <button class="btn btn-primary btn-lg form-control" @onclick=GoBack>Return to Home Page</button>            
+            </div>
+        </div>
+    </div> 
 
 @code {
     
     
-    private void GoTo()
+    private void GoBack()
     {
         NavigationManager.NavigateTo("/", true); 
     }
