@@ -1,51 +1,68 @@
 @page "/faq"
 @inject NavigationManager NavigationManager;
 
-@* <h3>FAQ</h3> *@
+<PageTitle>Frequently Asked Questions</PageTitle>
 
-<PageTitle>Frequently Asked Questions</PageTitle> @*Previously said "Contact us" - greg*@
-
-<h1>Frequently Asked Questions </h1>
-
-@* // INSERT FAQs here // *@
-<body>
-    
-    <br />
-    <strong>What methods are availiable for paying my fine? :</strong > 
-    <br />
-    There are a few methods for paying your fine, online, over the phone, in person or in the mail.
-    <br />
-    <br />
-    <strong>What do I need to pay my fine? :</strong > 
-    <br />
-    All you need is the account details for your fine and a method of payment.
-    <br />
-    <br />
-    <strong>Do I need to enter my email address? :</strong >
-    <br />
-    Entering your email address is optional, however we cannot send you a digital receipt without.
-    <br />
-    <br />
-    <strong>How can i check if I have already paid my fine? :</strong > 
-    <br />
-    You can check if a fine has been paid by entering the details through our "pay online" page.
-    <br />
-    <br />
-    <br />
-    <br />
-   <strong> FOR MORE INFORMATION PLEASE <a href="/contactus">CONTACT US</a></strong>
-   <br>
-   <br>
-
-   <div class="col-8">
-     <button class="btn btn-primary" @onclick=GoBack>Return to Home Page</button> 
+    <div class="row">
+        <div class="col py-3">
+            <h1>Frequently Asked Questions </h1>
+        </div>
     </div>
-    
 
+    <div class="row">
+        <div class="col pt-3">
+            <strong>What methods are availiable for paying my fine? :</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col pb-3">
+            There are a few methods for paying your fine, online, over the phone, in person or in the mail.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col pt-3">
+            <strong>What do I need to pay my fine? :</strong > 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col pb-3">
+            All you need is the account details for your fine and a method of payment.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col pt-3">
+            <strong>Do I need to enter my email address? :</strong >
+        </div>
+    </div>
+    <div class="row">
+        <div class="col pb-3">
+            Entering your email address is optional, however we cannot send you a digital receipt without.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col pt-3">
+            <strong>How can i check if I have already paid my fine? :</strong > 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col pb-3">
+            You can check if a fine has been paid by entering the details through our "pay online" page.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col py-3">
+            <strong> FOR MORE INFORMATION PLEASE <a href="/contactus">CONTACT US</a></strong>
+        </div>
+    </div>
 
+    <div class="form-group row justify-content-start py-3">
+        <div class="col">
+            <div class="d-flex" style="max-width: 592px">
+                <button class="btn btn-primary btn-lg form-control" @onclick=GoBack>Return to Home Page</button>            
+            </div>
+        </div>
+    </div>
 
-
-</body>
 @code {
      private void GoBack()
     {

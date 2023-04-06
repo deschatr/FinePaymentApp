@@ -14,11 +14,9 @@ public class PaymentDetailsFormItems
     public string? ExpiryMonth { get; set; }
     //[Required]
     public string? ExpiryYear { get; set; }
-
-
     //[Required]
     //[StringLength(maximumLength: 3, MinimumLength = 3, ErrorMessage = "3 characters please")]
-    public string? Csv{ get; set; }
+    public string? Ccv{ get; set; }
     // etc...
 
 }

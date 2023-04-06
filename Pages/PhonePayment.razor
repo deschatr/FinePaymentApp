@@ -4,36 +4,86 @@
 
 <PageTitle>phonepayment</PageTitle>
 
-<h1>To Pay By Phone</h1>
-<br>
-<p>If you would like pay the the fine amount over the telephone you can do this with a debit or credit card.</p>
-You will need your case reference number to pay.
-<br>
-Phone Number:  028 9072 8894
-<br>Email:  courtfundsoffice@courtsni.gov.uk
-<br><br>
-<h3>Help paying a court fine</h3>
-<p>If you’re finding it difficult to pay your financial penalty, contact the<a href="https://www.justice-ni.gov.uk/articles/fine-collection-and-enforcement-service"> <strong> Fine Collection and Enforcement Service.</strong></a> </p>
-<br>
-<h3>Who to contact if you want to contest the fine</h3>
-<p>If you would like to appeal a fine then you must contact the <strong>Northern Ireland Courts and Tribunals Service - Customer Service Centre
-Contact details</strong> for the Northern Ireland Courts and Tribunals Service Customer Service Centre.</p>
-<p>The Customer Service Centre can help you with queries about jury service and also the payment of Covid and Court Fines before 28 days.</p>
-<br>
-PO Box 256
-<br>
-Londonderry
-<br>
-United Kingdom
-<br>
-Phone: 0300 200 7812
-<br>
-Email: customerservicecentre@courtsni.gov.uk
+    <div class="row">
+        <div class="col py-3">
+            <h1>To Pay By Phone</h1>
+        </div>
+    </div>
 
-<br>
-<br>
+    <div class="row">
+        <div class="col">
+            If you would like pay the the fine amount over the telephone you can do this with a debit or credit card.
+        </div>
+    </div>
 
- <button class="btn btn-primary" @onclick=GoBack>Return to Home Page</button> 
+    <div class="row">
+        <div class="col py-2">
+            You will need your case reference number to pay.
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            Phone Number:  028 9072 8894<br>
+            Email:  courtfundsoffice@courtsni.gov.uk
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col pt-4">
+            <h3>Help paying a court fine</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            If you’re finding it difficult to pay your financial penalty, contact the
+            <a href="https://www.justice-ni.gov.uk/articles/fine-collection-and-enforcement-service">
+            Fine Collection and Enforcement Service.
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col pt-4">
+            <h3>Who to contact if you want to contest the fine</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            If you would like to appeal a fine then you must contact the <b>Northern Ireland Courts and Tribunals Service - Customer Service Centre
+            Contact details</b> for the Northern Ireland Courts and Tribunals Service Customer Service Centre.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col py-3">
+            The Customer Service Centre can help you with queries about jury service and also the payment of Covid and Court Fines before 28 days.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            PO Box 256<br>
+            Londonderry<br>
+            United Kingdom
+        </div>
+    </div>
+    <div class="row">
+        <div class="col py-2">
+            Phone: 0300 200 7812
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            Email: customerservicecentre@courtsni.gov.uk
+        </div>
+    </div>
+
+    <div class="form-group row justify-content-start py-3">
+        <div class="col">
+            <div class="d-flex" style="max-width: 592px">
+                <button class="btn btn-primary btn-lg form-control" @onclick=GoBack>Return to Home Page</button>            
+            </div>
+        </div>
+    </div>
+
 
 @code {
     private void GoBack()

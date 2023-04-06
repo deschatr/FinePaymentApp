@@ -5,40 +5,50 @@
 
 <PageTitle>Contact Us</PageTitle>
 
-<h1>Contact details</h1>
-
-@* <p style="font-family: lato sans serif; color:rgb(10, 120, 205); font-size: 20px;">This text has the font lato, is Blue, and 20px.</p> *@
- @* // INSERT CONTACT DETAILS HERE // *@
-<body>
-    
-    <br />
-    <strong>Email :</strong > Support@NIdirect.gov
-    <br />
-    <br />
-    <strong>Information Assitant :</strong > 01632 960877
-    <br />
-    <br />
-    <strong>Technical support :</strong > 01632 960567
-    <br />
-    <br />
-    <strong>Accessability Assistant :</strong > 01632 960339
-    <br />
-    <br />
-    <strong>Language Assitant :</strong > 01632 960560
-    <br />
-    <br />
-    <strong>Mailing Address :</strong > Telephone House, 45-75 May Street, Belfast BT1 4NB
-
-<br>
-<br>
-<br>
-   <div class="col-8">
-     <button class="btn btn-primary" @onclick=GoBack>Return to Home Page</button> 
+    <div class="row">
+        <div class="col py-3">
+            <h1>Contact details</h1>
+        </div>
     </div>
 
+    <div class="row">
+        <div class="col py-3">
+            <strong>Email :</strong > Support@NIdirect.gov
+        </div>
+    </div>
+    <div class="row">
+        <div class="col py-3">
+            <strong>Information Assitant :</strong > 01632 960877
+        </div>
+    </div>
+    <div class="row">
+        <div class="col py-3">
+            <strong>Technical support :</strong > 01632 960567
+        </div>
+    </div>
+    <div class="row">
+        <div class="col py-3">
+            <strong>Accessability Assistant :</strong > 01632 960339
+        </div>
+    </div>
+    <div class="row">
+        <div class="col py-3">
+            <strong>Language Assitant :</strong > 01632 960560
+        </div>
+    </div>
+    <div class="row">
+        <div class="col py-3">
+            <strong>Mailing Address :</strong > Telephone House, 45-75 May Street, Belfast BT1 4NB
+        </div>
+    </div>
 
-</body>
-
+    <div class="form-group row justify-content-start py-3">
+        <div class="col">
+            <div class="d-flex" style="max-width: 592px">
+                <button class="btn btn-primary btn-lg form-control" @onclick=GoBack>Return to Home Page</button>            
+            </div>
+        </div>
+    </div>
 
 @code {
      private void GoBack()

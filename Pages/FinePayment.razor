@@ -6,7 +6,7 @@
 
 <PageTitle>FinePayment</PageTitle>
 <br>
-<div class="col-8 offset-1">
+<div class="col px-3">
 <h1>Payment Details</h1>
 <br>
 <h3> Amount to be paid: £@amount </h3>
@@ -16,73 +16,60 @@
 <EditForm Model=@formItems OnValidSubmit=@HandleValidSubmit>
     <DataAnnotationsValidator />
 
-<div class="col-8 offset-1">
+<div class="container-fluid">
         <div class="form-group row">
-            <div class="col-8">
-                <span class ="input-group-text"> Cardholders Name:</span> 
-                <!-- <label>Cardholder label</label> -->
+            <div class="col">
+                <span class ="input-group-text" style="max-width: 592px">
+                    Cardholders Name:
+                </span> 
             </div>
         </div>
 
         <div class="form-group row">
-            <div class="col-8">
-                 @* <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div> *@
-                 <InputText class="form-control" @bind-Value=formItems.CardName id="cardname"/> 
+            <div class="col">
+                 <InputText class="form-control" style="max-width: 592px" @bind-Value=formItems.CardName id="cardname"/> 
             </div>
         </div>
     
      <br><br>
     
         <div class="form-group row">
-            <div class="col-8">
-                <span class ="input-group-text"> Card Type:</span> 
-                <!-- <label>Cardholder label</label> -->
+            <div class="col">
+                <span class ="input-group-text" style="max-width: 592px"> Card Type:</span> 
             </div>
         </div>
         
         <div class="form-group row">
-            <div class="col-8">
-                 @* <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div> *@
-                 <InputText class="form-control" @bind-Value=formItems.CardType id="cardtype"/> 
+            <div class="col">
+                 <InputText class="form-control" style="max-width: 592px" @bind-Value=formItems.CardType id="cardtype"/> 
             </div>
         </div><br><br>
 
        <div class="form-group row">
-            <div class="col-8">
-                <span class ="input-group-text"> Card Number:</span> 
-                <!-- <label>Cardholder label</label> -->
+            <div class="co">
+                <span class ="input-group-text" style="max-width: 592px">
+                    Card Number:
+                </span> 
             </div>
         </div>
         
         <div class="form-group row">
-            <div class="col-8">
-                 @* <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div> *@
-                 <InputText class="form-control" @bind-Value=formItems.CardNumber id="cardnumber"/> 
+            <div class="col">
+                 <InputText class="form-control" style="max-width: 592px" @bind-Value=formItems.CardNumber id="cardnumber"/> 
             </div>
         </div><br><br>
 
-    
-   
-    @* Not sure how to handle this Date with this EditForm as it requires a string *@
-    
-
-    @* <label>
-        Expiry Date:
-        <InputText @bind-Value=formItems.ExpiryDate id="expirydate"/>
-    </label><br><br> *@
-    
-
         <div class="form-group row">
-            <div class="col-8">
-                <span class ="input-group-text"> CSV:</span> 
-                <!-- <label>Cardholder label</label> -->
+            <div class="col">
+                <span class ="input-group-text" style="max-width: 592px">
+                    Security Code:
+                </span> 
             </div>
         </div>
         
         <div class="form-group row">
-            <div class="col-8">
-                 @* <input class="form-control form-control-sm" type=text placeholder=".form-control-sm"> </div> *@
-                 <InputText class="form-control" @bind-Value=formItems.Csv id="csv"/> 
+            <div class="col">
+                 <InputText class="form-control" style="max-width: 592px" @bind-Value=formItems.Ccv id="ccv"/> 
             </div>
         </div><br>
 
@@ -92,12 +79,16 @@
     <br>
  @* Formatting buttons *@
 
-        <div class="form-group row">
-            <div class="col-3">
-            <button class="btn btn-secondary btn-lg form-control" @onclick=GoBack>CANCEL</button>
-            </div>
-            <div class="col-3 offset-2">
-            <button class="btn btn-primary btn-lg form-control" type="submit"> PAY</button>
+        <div class="form-group row justify-content-start">
+            <div class="col">
+                <div class="d-flex" style="max-width: 592px">
+                    <button class="btn btn-secondary btn-lg form-control mx-3" type="button" @onclick="GoBack">
+                        CANCEL
+                    </button>
+                    <button class="btn btn-primary btn-lg form-control mx-3" type="submit">
+                        PAY
+                    </button>
+                </div>
             </div>
         </div>
 </div>
@@ -116,8 +107,15 @@
     protected override async Task OnInitializedAsync()
     {
         var finePayment = await finePaymentService.GetFinePayment(long.Parse(Id));
-        caseRef = finePayment.CaseReference;
-        amount = finePayment.Amount;
+        if (finePayment == null)
+        {
+            NavigationManager.NavigateTo("/", true); 
+        }
+        else
+        {
+            caseRef = finePayment.CaseReference;
+            amount = finePayment.Amount;
+        }
     }
    
     private void HandleValidSubmit()
@@ -127,10 +125,5 @@
     private void GoBack()
     {
         NavigationManager.NavigateTo("/", true); 
-    }
-    
-    private void GoTo()
-    {
-        NavigationManager.NavigateTo("/paymentconfirmation", true); 
     }
 }
