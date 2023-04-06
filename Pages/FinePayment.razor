@@ -102,9 +102,6 @@
         </div>
 </div>
 
-
-
-
 </EditForm>
 
 
@@ -113,7 +110,7 @@
     [Parameter]
     public string? Id { get; set; }
     public float amount { get; set; }
-    public string caseRef {get; set; }
+    public string? caseRef {get; set; }
     private PaymentDetailsFormItems formItems = new PaymentDetailsFormItems();
     
     protected override async Task OnInitializedAsync()
@@ -123,32 +120,13 @@
         amount = finePayment.Amount;
     }
    
-    private async void HandleValidSubmit()
+    private void HandleValidSubmit()
     {
-
-       @* // find the FinePayment that corresponds to the formDetails
-        // check if PaymentFine exists
-        // check is Payment completed
-        // forward to payment form
-
-        var paymentDetails = await finePaymentService.SearchFinePayment(formItems.CaseReference,formItems.OnlineAccountReference);
-
-        if (finePayment == null)
-        {
-            // doesn't exist -> details wrong?
-        }
-        else if (finePayment.PaymentCompleted)
-        {
-            // payment already done
-        }
-        else
-        {
-            // proceed to payment -> Navigate
-        } *@
+       NavigationManager.NavigateTo($"paymentconfirmation/{Id}", true); 
     } 
     private void GoBack()
     {
-        NavigationManager.NavigateTo("finedetails", true); 
+        NavigationManager.NavigateTo("/", true); 
     }
     
     private void GoTo()
