@@ -4,14 +4,15 @@ using Microsoft.Net.Http.Headers;
 using FinePaymentApp.Data;
 using FinePaymentManagement;
 
-// now using the API connected to the SQL server
-const string baseAddress = "https://v1a4g2api.azurewebsites.net/";
+const string baseAddress = "https://v1a4g2.azurewebsites.net/";
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddHttpClient<IFinePaymentService,FinePaymentService>("FinePaymentAPI", httpClient =>
 {
